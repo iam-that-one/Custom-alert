@@ -22,12 +22,13 @@ class ViewController: UIViewController {
         $0.tintColor = .black
         return $0
     }(UIImageView())
-    let alert = CustomAlert(frame: .zero, msg:"هل تود حفظ الصورة", alertTag: 0)
-    let alert2 = CustomAlert(frame: .zero, msg:  "هل تود حذف هذه الصورة؟", alertTag: 1)
+    lazy var alert = CustomAlert(frame: .zero, msg:"هل تود حفظ الصورة؟", alertTag: 0)
+    lazy var alert2 = CustomAlert(frame: .zero, msg:  "هل تود حذف هذه الصورة؟", alertTag: 1)
     lazy var saveBtn : UIButton = {
         $0.setBackgroundImage(UIImage(systemName: "trash.fill"), for: .normal)
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.addTarget(self, action: #selector(showAlertBut2Clicked), for: .touchDown)
+        $0.tintColor = .black
         return $0
         
     }(UIButton(type: .system))
@@ -35,6 +36,7 @@ class ViewController: UIViewController {
         $0.setBackgroundImage(UIImage(systemName: "square.and.arrow.down.fill"), for: .normal)
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.addTarget(self, action: #selector(showAlertButClicked), for: .touchDown)
+        $0.tintColor = .black
         return $0
     }(UIButton(type: .system))
     override func viewDidLoad() {
@@ -88,9 +90,11 @@ extension ViewController : btnDelegate{
         deleteBtn.isEnabled = true
         if tag == 0{
         animateAleart(alert: alert, logo: logo,image: "checkmark.circle.fill",color: .systemMint)
+            print("saved")
         }
         if tag == 1{
         animateAleart(alert: alert2, logo: logo,image: "checkmark.circle.fill",color: .systemMint)
+            print("deleted")
         }
     }
     
@@ -98,10 +102,13 @@ extension ViewController : btnDelegate{
         deleteBtn.isEnabled = true
         saveBtn.isEnabled = true
         if tag == 0{
-        animateAleart(alert: alert, logo: logo,image: "x.circle.fill",color: .red)
+            animateAleart(alert: alert, logo: logo,image: "x.circle.fill",color: .red)
+            print("saving has been interrupted")
         }
         if tag == 1{
-        animateAleart(alert: alert2, logo: logo,image: "x.circle.fill",color: .red)
+            animateAleart(alert: alert2, logo: logo,image: "x.circle.fill",color: .red)
+            print("deleting has been interrupted")
+        
         }
     }
    @objc func showAlertButClicked(){
