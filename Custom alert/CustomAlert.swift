@@ -15,6 +15,22 @@ class CustomAlert: UIView{
     var delegate : btnDelegate?
     var msg : String
     var alertTag : Int
+    override func draw(_ rect: CGRect) {
+        print(rect.width)
+        let topHalfcircle = UIBezierPath(arcCenter: CGPoint(x: self.bounds.width / 2, y: -30), radius: 40, startAngle:  -CGFloat.pi, endAngle:0, clockwise: false)
+        UIColor.red.setStroke()
+        topHalfcircle.fill()
+        topHalfcircle.lineWidth = 30
+        topHalfcircle.stroke()
+        self.clipsToBounds = false
+        self.layer.cornerRadius = 30
+        let topHalfcircle2 = UIBezierPath(arcCenter: CGPoint(x: self.bounds.width / 2 , y: self.bounds.height + 30), radius: 40, startAngle:  -CGFloat.pi, endAngle:0, clockwise: true)
+        UIColor.systemMint.setStroke()
+        topHalfcircle2.fill()
+        topHalfcircle2.lineWidth = 30
+        topHalfcircle2.fill()
+        topHalfcircle2.stroke()
+        }
     
     lazy var close : UIButton = {
         $0.setBackgroundImage(UIImage(systemName: "x.circle"), for: .normal)
@@ -59,15 +75,17 @@ class CustomAlert: UIView{
     }
     
     func setupView(){
-        
+        self.sendSubviewToBack(ok)
+        self.sendSubviewToBack(close)
         self.layer.cornerRadius = 20
+       // self.clipsToBounds = false
         self.layer.shadowOpacity = .pi
         self.layer.shadowColor = .init(gray: 0.50, alpha: 1)
         self.backgroundColor = .white
         
         [close,ok,message].forEach{self.addSubview($0)}
         NSLayoutConstraint.activate([
-            close.topAnchor.constraint(equalTo: self.topAnchor,constant: -25),
+            close.topAnchor.constraint(equalTo: self.topAnchor),
             close.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             close.heightAnchor.constraint(equalToConstant: 50),
             close.widthAnchor.constraint(equalToConstant: 50),
@@ -75,7 +93,7 @@ class CustomAlert: UIView{
             message.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             message.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             
-            ok.bottomAnchor.constraint(equalTo: self.bottomAnchor,constant: 25),
+            ok.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             ok.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             ok.heightAnchor.constraint(equalToConstant: 50),
             ok.widthAnchor.constraint(equalToConstant: 50)

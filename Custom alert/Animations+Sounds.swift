@@ -35,6 +35,7 @@ func animateAleart(alert: UIView, logo: UIImageView, image: String, color: UICol
        logo.isHidden = true
     }
 }
+
 func playAudio(_ assetName : String) {
    guard let audioData = NSDataAsset(name: assetName)?.data else {
       fatalError("Unable to find asset \(assetName)")
