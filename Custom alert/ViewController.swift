@@ -127,6 +127,7 @@ extension ViewController : btnDelegate{
         deleteBtn.isEnabled = false
         tag = alert2.alertTag
         print(tag)
+        animateLogo(view: alert2)
         logo.isHidden = true
         self.alert2.isHidden = false
             alert2.center.y = UIScreen.main.bounds.height / 2
