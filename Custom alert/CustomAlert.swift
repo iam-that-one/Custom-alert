@@ -82,7 +82,7 @@ class CustomAlert: UIView{
         self.layer.shadowOpacity = .pi
         self.layer.shadowColor = .init(gray: 0.50, alpha: 1)
         self.backgroundColor = .white
-        
+        message.textAlignment = .center
         [close,ok,message].forEach{self.addSubview($0)}
         NSLayoutConstraint.activate([
             close.topAnchor.constraint(equalTo: self.topAnchor),
@@ -92,7 +92,9 @@ class CustomAlert: UIView{
             
             message.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             message.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            
+            message.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            message.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+        
             ok.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             ok.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             ok.heightAnchor.constraint(equalToConstant: 50),

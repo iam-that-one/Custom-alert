@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         $0.tintColor = .black
         return $0
     }(UIImageView())
-    lazy var alert = CustomAlert(frame: .zero, msg:"هل تود حفظ الصورة؟", alertTag: 0)
+    lazy var alert = CustomAlert(frame: .zero, msg:"هل تود حفظ الصورة بسبل سيببلقس لسبلسق لبيدسبقس لسقلسقد سبلسبس؟", alertTag: 0)
     lazy var alert2 = CustomAlert(frame: .zero, msg:  "هل تود حذف هذه الصورة؟", alertTag: 1)
     lazy var saveBtn : UIButton = {
         $0.setBackgroundImage(UIImage(systemName: "trash.fill"), for: .normal)
