@@ -22,8 +22,7 @@ class CustomAlert: UIView{
         topHalfcircle.fill()
         topHalfcircle.lineWidth = 30
         topHalfcircle.stroke()
-        self.clipsToBounds = false
-        self.layer.cornerRadius = 30
+       
         let topHalfcircle2 = UIBezierPath(arcCenter: CGPoint(x: self.bounds.width / 2 , y: self.bounds.height + 30), radius: 40, startAngle:  -CGFloat.pi, endAngle:0, clockwise: true)
         UIColor.systemMint.setStroke()
         topHalfcircle2.fill()
@@ -56,8 +55,8 @@ class CustomAlert: UIView{
         $0.numberOfLines = 0
         $0.translatesAutoresizingMaskIntoConstraints = false
         $0.text = msg
+        $0.textAlignment = .center
         $0.textColor = .black
-        $0.textAlignment = .left
         $0.font = UIFont.systemFont(ofSize: 14, weight: .bold)
         
         return $0
@@ -75,14 +74,9 @@ class CustomAlert: UIView{
     }
     
     func setupView(){
-        self.sendSubviewToBack(ok)
-        self.sendSubviewToBack(close)
-        self.layer.cornerRadius = 20
-       // self.clipsToBounds = false
         self.layer.shadowOpacity = .pi
-        self.layer.shadowColor = .init(gray: 0.50, alpha: 1)
+        self.layer.shadowColor = .init(gray: 0.10, alpha: 1)
         self.backgroundColor = .white
-        message.textAlignment = .center
         [close,ok,message].forEach{self.addSubview($0)}
         NSLayoutConstraint.activate([
             close.topAnchor.constraint(equalTo: self.topAnchor),

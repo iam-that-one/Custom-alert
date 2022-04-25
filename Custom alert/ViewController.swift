@@ -66,12 +66,12 @@ class ViewController: UIViewController {
             alert.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             alert.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             alert.widthAnchor.constraint(equalToConstant: 290),
-            alert.heightAnchor.constraint(equalToConstant: 170),
+            alert.heightAnchor.constraint(equalToConstant: 150),
             
             alert2.topAnchor.constraint(equalTo: saveBtn.bottomAnchor,constant: 50),
             alert2.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             alert2.widthAnchor.constraint(equalToConstant: 290),
-            alert2.heightAnchor.constraint(equalToConstant: 170),
+            alert2.heightAnchor.constraint(equalToConstant: 150),
             
             logo.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             logo.centerXAnchor.constraint(equalTo: view.centerXAnchor),
